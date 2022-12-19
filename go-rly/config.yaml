@@ -1,0 +1,53 @@
+global:
+    api-listen-addr: :5183
+    timeout: 10s
+    memo: relayed_by_ImStaked
+    light-cache-size: 20
+chains:
+    fetchhub:
+        type: cosmos
+        value:
+            key: fkey
+            chain-id: fetchhub-4
+            rpc-addr: http://62.171.136.38:26650/
+            account-prefix: fetch
+            keyring-backend: test
+            gas-adjustment: 1.2
+            gas-prices: 0.1afet
+            max-gas: 600000
+            min-gas-amount: 100000
+            debug: true
+            timeout: 20s
+            output-format: json
+            sign-mode: direct
+            extra-codecs: []
+    osmosis:
+        type: cosmos
+        value:
+            key: okey
+            chain-id: osmosis-1
+            rpc-addr: http://10.204.53.103:26657/
+            account-prefix: osmo
+            keyring-backend: test
+            gas-adjustment: 1.2
+            gas-prices: 0.1uosmo
+            max-gas: 700000
+            min-gas-amount: 150000
+            debug: true
+            timeout: 20s
+            output-format: json
+            sign-mode: direct
+            extra-codecs: []
+paths:
+    fetchhub-osmosis:
+        src:
+            chain-id: fetchhub-4
+            client-id: 07-tendermint-10
+            connection-id: connection-10
+        dst:
+            chain-id: osmosis-1
+            client-id: 07-tendermint-1913
+            connection-id: connection-1490
+        src-channel-filter:
+            rule: ""
+            channel-list: []
