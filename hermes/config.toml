@@ -1,0 +1,111 @@
+[global]
+log_level = 'info'
+
+[mode.clients]
+enabled = false
+refresh = false
+misbehaviour = false
+
+[mode.connections]
+enabled = false
+
+[mode.channels]
+enabled = false
+
+[mode.packets]
+enabled = true
+clear_interval = 50
+clear_on_start = true
+tx_confirmation = true
+auto_register_counterparty_payee = true
+
+[rest]
+enabled = true
+host = '127.0.0.1'
+port = 3000
+
+[telemetry]
+enabled = true
+host = '127.0.0.1'
+port = 3001
+
+[[chains]]
+id = 'fetchhub-4'
+type = 'CosmosSdk'
+rpc_addr = 'http://62.171.136.38:26650/'
+websocket_addr = 'ws://62.171.136.38:26650/websocket'
+grpc_addr = 'http://62.171.136.38:9090/'
+rpc_timeout = '15s'
+account_prefix = 'fetch'
+key_name = 'fkey'
+key_store_type = 'Test'
+store_prefix = 'ibc'
+default_gas = 100000
+max_gas = 650000
+gas_multiplier = 1.1
+max_msg_num = 30
+max_tx_size = 265000
+clock_drift = '5s'
+max_block_time = '30s'
+trusting_period = '7days'
+memo_prefix = 'relayed by '
+sequential_batch_tx = false
+
+[chains.trust_threshold]
+numerator = '1'
+denominator = '3'
+
+[chains.gas_price]
+price = 0.1
+denom = 'afet'
+
+[chains.packet_filter]
+policy = 'allow'
+list = [[
+    'transfer',
+    'channel-10',
+]]
+
+[chains.address_type]
+derivation = 'cosmos'
+
+[[chains]]
+id = 'osmosis-1'
+type = 'CosmosSdk'
+rpc_addr = 'http://10.204.53.103:26657/'
+websocket_addr = 'ws://10.204.53.103:26657/websocket'
+grpc_addr = 'http://10.204.53.103:9090/'
+rpc_timeout = '10s'
+account_prefix = 'osmo'
+key_name = 'okey'
+key_store_type = 'Test'
+store_prefix = 'ibc'
+default_gas = 100000
+max_gas = 600000
+gas_multiplier = 1.1
+max_msg_num = 30
+max_tx_size = 180000
+clock_drift = '5s'
+max_block_time = '30s'
+trusting_period = '7days'
+memo_prefix = 'relayed by '
+sequential_batch_tx = true
+
+[chains.trust_threshold]
+numerator = '1'
+denominator = '3'
+
+[chains.gas_price]
+price = 0.1
+denom = 'uosmo'
+
+[chains.packet_filter]
+policy = 'allow'
+list = [[
+    'transfer',
+    'channel-229',
+]]
+
+[chains.address_type]
+derivation = 'cosmos'
+
